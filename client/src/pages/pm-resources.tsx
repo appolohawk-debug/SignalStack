@@ -334,7 +334,7 @@ export default function PmResources() {
                                 <Button 
                                   size="sm" 
                                   variant="outline"
-                                  onClick={() => window.open(resource.downloadUrl, '_blank')}
+                                  onClick={() => resource.downloadUrl && window.open(resource.downloadUrl, '_blank')}
                                   data-testid={`download-${resource.id}`}
                                 >
                                   <Download className="h-4 w-4" />
@@ -344,7 +344,7 @@ export default function PmResources() {
                                 <Button 
                                   size="sm" 
                                   variant="outline"
-                                  onClick={() => window.open(resource.resourceUrl, '_blank')}
+                                  onClick={() => resource.resourceUrl && window.open(resource.resourceUrl, '_blank')}
                                   data-testid={`view-${resource.id}`}
                                 >
                                   <ExternalLink className="h-4 w-4" />
@@ -404,7 +404,7 @@ export default function PmResources() {
                         <Button 
                           size="sm" 
                           variant="outline"
-                          onClick={() => window.open(resource.downloadUrl, '_blank')}
+                          onClick={() => resource.downloadUrl && window.open(resource.downloadUrl, '_blank')}
                           data-testid={`download-${resource.id}`}
                         >
                           <Download className="h-4 w-4" />
@@ -414,7 +414,7 @@ export default function PmResources() {
                         <Button 
                           size="sm" 
                           variant="outline"
-                          onClick={() => window.open(resource.resourceUrl, '_blank')}
+                          onClick={() => resource.resourceUrl && window.open(resource.resourceUrl, '_blank')}
                           data-testid={`view-${resource.id}`}
                         >
                           <ExternalLink className="h-4 w-4" />

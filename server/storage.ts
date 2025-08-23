@@ -203,12 +203,20 @@ export class MemStorage implements IStorage {
     // Add sample data to storage
     sampleNewsItems.forEach(item => {
       const id = randomUUID();
-      this.newsItems.set(id, { ...item, id, createdAt: item.publishedAt });
+      this.newsItems.set(id, { ...item, id, createdAt: item.publishedAt, content: item.content || null });
     });
 
     samplePmResources.forEach(resource => {
       const id = randomUUID();
-      this.pmResources.set(id, { ...resource, id, createdAt: new Date() });
+      this.pmResources.set(id, { 
+        ...resource, 
+        id, 
+        createdAt: new Date(),
+        content: resource.content || null,
+        company: resource.company || null,
+        resourceUrl: resource.resourceUrl || null,
+        downloadUrl: resource.downloadUrl || null
+      });
     });
   }
 
@@ -291,7 +299,8 @@ export class MemStorage implements IStorage {
       ...insertNewsItem, 
       id, 
       createdAt: new Date(),
-      publishedAt: insertNewsItem.publishedAt || new Date()
+      publishedAt: insertNewsItem.publishedAt || new Date(),
+      content: insertNewsItem.content || null
     };
     this.newsItems.set(id, newsItem);
     return newsItem;
@@ -371,7 +380,11 @@ export class MemStorage implements IStorage {
     const resource: PmResource = { 
       ...insertResource, 
       id, 
-      createdAt: new Date()
+      createdAt: new Date(),
+      content: insertResource.content || null,
+      company: insertResource.company || null,
+      resourceUrl: insertResource.resourceUrl || null,
+      downloadUrl: insertResource.downloadUrl || null
     };
     this.pmResources.set(id, resource);
     return resource;

@@ -119,16 +119,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const allNews = await storage.getNewsItems();
       const allResources = await storage.getPmResources();
 
-      const companies = [...new Set(allNews.map(item => item.company))];
-      const implementationTypes = [...new Set(allNews.map(item => item.implementationType))];
-      const relevanceCategories = [...new Set(allNews.flatMap(item => item.relevanceCategories))];
-      const industries = [...new Set(allNews.map(item => item.industry))];
-      const technologies = [...new Set(allNews.map(item => item.technology))];
+      const companies = Array.from(new Set(allNews.map(item => item.company)));
+      const implementationTypes = Array.from(new Set(allNews.map(item => item.implementationType)));
+      const relevanceCategories = Array.from(new Set(allNews.flatMap(item => item.relevanceCategories)));
+      const industries = Array.from(new Set(allNews.map(item => item.industry)));
+      const technologies = Array.from(new Set(allNews.map(item => item.technology)));
 
-      const resourceTypes = [...new Set(allResources.map(resource => resource.resourceType))];
-      const pmStages = [...new Set(allResources.map(resource => resource.pmStage))];
-      const difficulties = [...new Set(allResources.map(resource => resource.difficulty))];
-      const resourceTags = [...new Set(allResources.flatMap(resource => resource.tags))];
+      const resourceTypes = Array.from(new Set(allResources.map(resource => resource.resourceType)));
+      const pmStages = Array.from(new Set(allResources.map(resource => resource.pmStage)));
+      const difficulties = Array.from(new Set(allResources.map(resource => resource.difficulty)));
+      const resourceTags = Array.from(new Set(allResources.flatMap(resource => resource.tags)));
 
       res.json({
         news: {
